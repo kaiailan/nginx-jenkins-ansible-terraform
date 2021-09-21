@@ -17,11 +17,11 @@ pipeline {
             steps {
                 script {
                     if (params.Action == "apply") {
-                        sh 'terraform init terraform/static-site'
-                        sh 'terraform apply -var "name=hello" -var "group=web" -var "region=ap-southeast-2" -var "profile=kaiqi" --auto-approve terraform/static-site'
+                        sh 'terraform -chdir=terraform/static-site init'
+                        sh 'terraform -chdir=terraform/static-site apply -var "name=hello" -var "group=web" -var "region=ap-southeast-2" -var "profile=kaiqi" --auto-approve'
                     }
                     else {
-                        sh 'terraform destroy -var "name=hello" -var "group=web" -var "region=ap-southeast-2" -var "profile=kaiqi" --auto-approve terraform/static-site'
+                        sh 'terraform -chdir=terraform/static-site destroy -var "name=hello" -var "group=web" -var "region=ap-southeast-2" -var "profile=kaiqi" --auto-approve'
                     }
                 }
             }
