@@ -18,10 +18,10 @@ pipeline {
                 script {
                     if (params.Action == "apply") {
                         sh 'terraform -chdir=terraform/static-site init'
-                        sh 'terraform -chdir=terraform/static-site apply -var "name=hello" -var "group=web" -var "region=ap-southeast-2" -var "profile=kaiqi" --auto-approve'
+                        sh 'terraform -chdir=terraform/static-site apply -var "name=hello" -var "group=web" -var "region=ap-southeast-2" -var "profile=default" --auto-approve'
                     }
                     else {
-                        sh 'terraform -chdir=terraform/static-site destroy -var "name=hello" -var "group=web" -var "region=ap-southeast-2" -var "profile=kaiqi" --auto-approve'
+                        sh 'terraform -chdir=terraform/static-site destroy -var "name=hello" -var "group=web" -var "region=ap-southeast-2" -var "profile=default" --auto-approve'
                     }
                 }
             }
